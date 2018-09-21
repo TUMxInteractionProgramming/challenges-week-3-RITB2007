@@ -23,6 +23,26 @@ button, strong {
 }
 
 
+/* SECTION */
+
+/* split the screen */
+/* channel area is on the left */
+#channels {
+    position: absolute;
+    height: 100%;
+    width: 40%;
+    top: 0px;
+    left: 0px;
+    background-color: white;
+}
+
+/* chat area is on the left */
+#chat {
+    position: absolute;
+    left: 40%;
+    width: 60%;
+    height: 100%;
+}
 
 /* APP BAR */
 
@@ -30,6 +50,15 @@ button, strong {
 h1 {
     background-color: #3F51B5;
     color: white;
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+    height: 61px;
+    font-weight: normal;
+}
+
+h1 img {
+    margin-left: 10px;
 }
 
 
@@ -41,6 +70,12 @@ ul {
     background-color: white;
     /* #3 #channels #bullets removed */
     list-style-type: none;
+    position: absolute;
+    top:66px;
+    bottom:72px;
+    /* enable scrolling */
+    overflow: auto;
+    width:100%;
 }
 
 li {
@@ -49,6 +84,7 @@ li {
     height: 48px;
     padding: 16px;
     font-size: 16px;
+    line-height: 16px;
     /* #4 #channel tiles are separated by #lines */
     border-bottom: 1px solid #F5F5F5;
 }
@@ -59,7 +95,8 @@ li.selected {
     border-left: 4px solid #3F51B5;
 }
 
-li img {
+.channel-meta {
+    float: right; 
     /* #4 #middle vertical alignment of icons in the #channels list */
     vertical-align: middle;
 }
@@ -67,20 +104,27 @@ li img {
 /* TAB BAR */
 
 /* #4 #sweat #tab-bar */
+#tab-bar, #chat-bar {
+    position: absolute;
+    bottom: 0;
+    /* #3 #tab-bar #container has all buttons centered */
+    text-align: center;
+    display: flex;
+    width: 100%;
+}
+
 #tab-bar {
     /* #3 #tab-bar #container should be white */
     background-color: white;
-    /* #3 #tab-bar #container has all buttons centered */
-    text-align: center;
 }
 
 /* #4 add styles to #tab-bar #buttons */
-#tab-bar button {
+#tab-bar button, #emojis-button {
     background-color: white;
     border: none;
     font-size: 13px;
 
-    /* #4 #tab-bar buttons have a width of #one-third of the available space */
+/* #4 #tab-bar buttons have a width of #one-third of the available space */
     width: 33%;
     height: 72px;
     padding: 16px;
@@ -98,8 +142,27 @@ li img {
     border-bottom: 4px solid #3F51B5;
 }
 
+#location a {
+    text-decoration: none;
+    color: white;
+}
+
+#right {
+    position: absolute;
+    right:16px;
+}
+
 
 /* MESSAGES */
+/* enable scrolling */
+#all-messages {
+    position: absolute;
+    top:66px;
+    bottom:72px;
+    overflow: auto;
+    width:100%;
+    
+}
 /* #4 select #specific #messages by class and re-assign element styles according to their #hierarchy in a nested way */
 .message {
     /* #3 #chat #width*/
@@ -112,6 +175,17 @@ li img {
     margin-bottom: 8px;
 }
 
+/* Let all dates appear in one column*/
+.date {
+    width: 50%;
+    display: inline-block;
+    text-align: left;
+    float: right;
+}
+
+.date em{
+    float: right;
+}
 
 .message h3 {
     font-size: medium;
@@ -128,6 +202,7 @@ li img {
 }
 
 .message p {
+    position:relative;
     background-color: white;
     padding: 16px;
 }
@@ -136,10 +211,29 @@ li img {
     background-color: #CDDC39;
     color: black;
     text-transform: uppercase;
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
 }
 
 /* #4 left align own #messages using #margins */
 .message.own {
     margin-left: 17.5%;
+}
+#chat-bar {
+    width:auto;
+    flex-direction: column-reverse;
+}
+#emojis {
+    display: none;
+    background-color: white;
+    border: 1px solid black;
+    width: 300px;
+    height: 300px;
+    font-size: 20px;
+    text-align: left;
+    overflow: auto;
+    margin-left: 16px;
+    padding: 16px;  
 }
 
